@@ -1,0 +1,22 @@
+﻿@using Lektion5.Model;
+@model List<User>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+@foreach (var user in Model)
+{ 
+    <p>
+    <div>
+        Username: @user.UserName
+    </div>
+    <div>
+        First name: @user.FirstName
+    </div>
+    <div>
+        Last name: @user.LastName
+    </div>
+    </p>
+}

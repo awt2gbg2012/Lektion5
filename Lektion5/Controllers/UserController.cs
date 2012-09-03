@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Lektion5.Model.Repositories;
 
 namespace Lektion5.Controllers
 {
@@ -13,7 +14,9 @@ namespace Lektion5.Controllers
 
         public ActionResult Index()
         {
-            return View();
+            var users = (new Repository()).GetUsers();
+
+            return View(users);
         }
 
     }
