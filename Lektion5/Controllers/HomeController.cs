@@ -11,7 +11,7 @@ namespace Lektion5.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Message = "Welcome to ASP.NET MVC!";
+            ViewBag.Message = string.Format("Hello {0}! Your birthday is {1:d}", "David", DateTime.Parse("1889-12-21")); // :d i min formatstring gör så att ett datum skrivs ut på kort-format. Det finns en enorm mängd sådana formatteringsregler man kan slänga på
 
             return View();
         }
