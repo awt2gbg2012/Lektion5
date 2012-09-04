@@ -8,15 +8,5 @@
 
 @foreach (var user in Model)
 { 
-    <p>
-    <div>
-        Username: @user.UserName
-    </div>
-    <div>
-        First name: @user.FirstName
-    </div>
-    <div>
-        Last name: @user.LastName
-    </div>
-    </p>
+    @Html.Partial("_UserDetailPartial", user);
 }
