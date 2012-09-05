@@ -20,7 +20,7 @@
     </div>
 }
 
-@foreach (var user in Model.Users)
+@foreach (var userDetails in Model.UserDetails)
 { 
-    @Html.Partial("_UserDetailPartial", user)
+    @Html.Partial("_UserDetailPartial", userDetails)
 }

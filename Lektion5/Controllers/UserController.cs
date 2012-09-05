@@ -16,9 +16,11 @@ namespace Lektion5.Controllers
         public ActionResult Index(int id = 1)
         {
             Repository Repo = new Repository();
-            var users = Repo.GetUsers(id - 1, 10);
             var lastPage = Repo.GetLastUserPage();
-            var vm = new UserListViewModel() { Users = users, CurrentPage = id, FirstPage = 1, LastPage = lastPage };
+            var userDetails = Repo.GetUsers(id - 1, 10)
+                                  .Select(u => new UserDetailsViewModel() { User = u, Posts = Repo.GetPostByUserID(u.UserID, 5) })
+                                  .ToList(); // Den här logiken skulle vi vilja lägga i Model för att hålla Controller ren - hur gör vi det?
+            var vm = new UserListViewModel() { UserDetails = userDetails, CurrentPage = id, FirstPage = 1, LastPage = lastPage };
 
             return View(vm);
         }

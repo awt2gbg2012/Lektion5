@@ -1,17 +1,20 @@
-﻿@using Lektion5.Model;
-@model User
+﻿@using Lektion5.ViewModel;
+@model UserDetailsViewModel
 @{
     ViewBag.Title = "UserDetailPartial";
 }
 
 <p>
     <div>
-        Username: @Model.UserName
+        Username: @Model.User.UserName
     </div>
     <div>
-        First name: @Model.FirstName
+        First name: @Model.User.FirstName
     </div>
     <div>
-        Last name: @Model.LastName
+        Last name: @Model.User.LastName
+    </div>
+    <div>
+        Posts: @Model.Posts.Count [Count är placeholder - vi kan lika gärna visa 5 posts då vi har tillgång till dem]
     </div>
 </p>

@@ -82,6 +82,11 @@ namespace Lektion5.Model.Repositories
             return (int)Math.Ceiling((decimal)(GetUsers().Count / 10.0));
         }
 
+        public List<Post> GetPostByUserID(Guid id, int take)
+        {
+            return GetPosts().Where(p => p.CreatedByID == id).OrderBy(p => p.CreateDate).Take(take).ToList();
+        }
+
         // #region gör att allt fram till #endregion kan minimeras till en rad i Visual Studio.
         // Detta nyckelord påverkar inte funktionen hos koden.
         #region Private Helper Methods
