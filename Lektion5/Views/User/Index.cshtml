@@ -1,12 +1,26 @@
-﻿@using Lektion5.Model;
-@model List<User>
+﻿@using Lektion5.ViewModel;
+@model UserListViewModel
 @{
     ViewBag.Title = "Index";
 }
 
 <h2>Index</h2>
 
-@foreach (var user in Model)
+@if (Model.FirstPage < Model.CurrentPage)
+{
+    <div>
+        @Html.ActionLink("< Prev", "Index", "User", new { id = Model.CurrentPage - 1 }, null)
+    </div>
+}
+
+@if (Model.LastPage > Model.CurrentPage)
+{
+    <div>
+        @Html.ActionLink("Next >", "Index", "User", new { id = Model.CurrentPage + 1 }, null)
+    </div>
+}
+
+@foreach (var user in Model.Users)
 { 
-    @Html.Partial("_UserDetailPartial", user);
+    @Html.Partial("_UserDetailPartial", user)
 }

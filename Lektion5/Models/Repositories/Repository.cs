@@ -23,6 +23,11 @@ namespace Lektion5.Model.Repositories
             return users;
         }
 
+        public List<User> GetUsers(int skip, int take)
+        {
+            return users.OrderBy(u => u.UserName).Skip(skip*take).Take(take).ToList();
+        }
+
         public void AddUser(User newUser)
         {
             if (newUser.UserID == null)
@@ -70,6 +75,11 @@ namespace Lektion5.Model.Repositories
                 throw new Exception("Post with this PostID does not exist!");
             Post postToBeRemoved = posts.Where(p => p.PostID == postID).FirstOrDefault();
             posts.Remove(postToBeRemoved);
+        }
+
+        public int GetLastUserPage()
+        {
+            return (int)Math.Ceiling((decimal)(GetUsers().Count / 10.0));
         }
 
         // #region gör att allt fram till #endregion kan minimeras till en rad i Visual Studio.
